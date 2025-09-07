@@ -16,7 +16,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('Current State:', this.state);
     return (
       <AppContext.Provider
         value={{ role: this.state.role, setRole: this.setRole }}

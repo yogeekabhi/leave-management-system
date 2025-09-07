@@ -21,9 +21,7 @@ class EmployeeApplyLeave extends React.Component {
 
   componentDidMount() {
     this.context.setRole('employee');
-    console.log(authStore.userInfo.id, '**********authStore');
     this.getServerTime().then((serverTime) => {
-      console.log('*****Server time*****', serverTime);
       this.setState({
         todayDate: serverTime.currentDate.toISOString().split('T')[0],
         yearEndDate: `${serverTime.currentYear}-12-31`

@@ -73,7 +73,6 @@ class ManagerTeamLeaves extends React.Component {
   };
 
   render() {
-    console.log(authStore.leaveDetails.totalLeavesList, '%%%%');
     return (
       <div
         style={{

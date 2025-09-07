@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AdminDashboardChart = ({ leavesByEmployee }) => {
-  console.log({ leavesByEmployee });
   return (
     <div
       style={{

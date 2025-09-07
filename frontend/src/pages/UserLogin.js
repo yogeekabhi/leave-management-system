@@ -57,7 +57,6 @@ class UserLogin extends Component {
       const { username, password, employeeId } = this.state;
       const response = await fetch(`/users/${employeeId}`);
       const data = await response.json();
-      console.log({ data });
       if (
         data?.email.toLowerCase() === username.toLowerCase() &&
         data?.password === password
@@ -89,7 +88,6 @@ class UserLogin extends Component {
           this.props.router.navigate(`/team-leaves/${data.id}/employeeId/all`);
         }
         if (data.role === 'employee') {
-          console.log(data, '*******login data');
           this.getEmployeeLeaveDetails(data.id).then((data) => {
             console.log('*****EMPLOYEE LEAVE DETAILS*****', data);
             if (data?.length > 0) {

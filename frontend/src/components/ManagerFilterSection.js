@@ -42,7 +42,6 @@ class ManagerFilterSection extends Component {
   //   };
 
   handleFilterChange = (e) => {
-    console.log(e.target.name, e.target.value, '%%%%%filtering...');
     if (e.target.name === 'filterByEmployee') {
       this.props.router.navigate(
         `/team-leaves/${this.props.managerId}/${e.target.value}/${this.props.router.params.status}`
@@ -63,12 +62,7 @@ class ManagerFilterSection extends Component {
     const employeeOptions = !!localStorage.getItem('employeeOptions')
       ? JSON.parse(localStorage.getItem('employeeOptions'))
       : [];
-    console.log(
-      params,
-      activeEmployee,
-      activeStatus,
-      '%%%params in filter section'
-    );
+
     return (
       <div
         style={{
