@@ -1,0 +1,37 @@
+# Node modules (for all subfolders)
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/package-lock.json
+**/pnpm-lock.yaml
+**/yarn.lock
+
+# Build output
+frontend/build/
+frontend/dist/
+
+# Environment files
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# JSON Server runtime files
+mock-api/.json-server.json
+api-proxy/.json-server.json
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Editor configs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/

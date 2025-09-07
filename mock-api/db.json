@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 100,
+      "name": "Robert Downey Jr.",
+      "email": "robert@company.com",
+      "password": "rob123",
+      "role": "admin"
+    },
+    {
+      "id": 200,
+      "name": "Scarlett Johansson",
+      "email": "scarlett@company.com",
+      "password": "scar123",
+      "role": "manager"
+    },
+    {
+      "id": 300,
+      "name": "Peter Parker",
+      "email": "peter@company.com",
+      "password": "pet123",
+      "role": "employee"
+    }
+  ]
+}
