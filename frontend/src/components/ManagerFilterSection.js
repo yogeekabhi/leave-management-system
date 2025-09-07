@@ -70,13 +70,33 @@ class ManagerFilterSection extends Component {
       '%%%params in filter section'
     );
     return (
-      <div style={{ marginBottom: 16 }}>
-        <label style={{ marginRight: 12 }}>
-          Filter by Employee:
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '12px',
+          margin: '20px auto',
+          padding: '16px',
+          background: '#fff',
+          borderRadius: '8px',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+          maxWidth: '600px',
+          justifyContent: 'center'
+        }}
+      >
+        <label style={{ fontSize: '14px', color: '#333' }}>
+          Filter by Employee:{' '}
           <select
             name='filterByEmployee'
             value={activeEmployee}
             onChange={this.handleFilterChange}
+            style={{
+              padding: '8px',
+              borderRadius: '6px',
+              border: '1px solid #ccc',
+              fontSize: '14px',
+              marginLeft: '8px'
+            }}
           >
             <option value='employeeId'>None</option>
             {employeeOptions?.map((emp) => (
@@ -87,12 +107,19 @@ class ManagerFilterSection extends Component {
           </select>
         </label>
 
-        <label>
-          Filter by Status:
+        <label style={{ fontSize: '14px', color: '#333' }}>
+          Filter by Status:{' '}
           <select
             name='filterByStatus'
             value={activeStatus}
             onChange={this.handleFilterChange}
+            style={{
+              padding: '8px',
+              borderRadius: '6px',
+              border: '1px solid #ccc',
+              fontSize: '14px',
+              marginLeft: '8px'
+            }}
           >
             {statuses.map((stat) => (
               <option key={stat} value={stat.toLowerCase()}>

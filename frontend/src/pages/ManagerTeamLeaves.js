@@ -48,9 +48,9 @@ class ManagerTeamLeaves extends React.Component {
   //   };
 
   getFilteredResults = async (params) => {
-    const { employeeId, status } = params;
+    const { employeeId, status, managerId } = params;
     try {
-      let url = `/leaves?managerId=${authStore.userInfo.id}`;
+      let url = `/leaves?managerId=${managerId}`;
       if (employeeId && employeeId !== 'employeeId') {
         url += `&employeeId=${employeeId}`;
       }
@@ -60,7 +60,7 @@ class ManagerTeamLeaves extends React.Component {
       const res = await fetch(url);
       const data = await res.json();
       authStore.setLeaveDetails({
-        ...authStore.leaveDetails,
+        totalLeaves: data.length,
         totalLeavesList: data
       });
     } catch (err) {
@@ -72,7 +72,17 @@ class ManagerTeamLeaves extends React.Component {
   render() {
     console.log(authStore.leaveDetails.totalLeavesList, '%%%%');
     return (
-      <div>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '100vw',
+          boxSizing: 'border-box',
+          overflowX: 'hidden',
+          background: '#f5f6fa',
+          minHeight: '100vh',
+          padding: '16px'
+        }}
+      >
         <ManagerNavBar />
         <ManagerFilterSection
           managerId={this.props.router.params.managerId}
