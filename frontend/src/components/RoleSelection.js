@@ -10,10 +10,6 @@ class RoleSelection extends Component {
     this.state = {};
   }
 
-  onLogoutClick = () => {
-    authStore.clearStore();
-  };
-
   render() {
     const { role, setRole } = this.context;
     return (
@@ -34,11 +30,6 @@ class RoleSelection extends Component {
             <option value='admin'>Admin</option>
           </select>
         </div>
-        {!!authStore.userInfo.id && (
-          <button type='button' onClick={this.onLogoutClick}>
-            Logout
-          </button>
-        )}
       </div>
     );
   }

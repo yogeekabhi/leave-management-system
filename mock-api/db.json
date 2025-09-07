@@ -49,7 +49,7 @@
       "startDate": "2025-11-10",
       "endDate": "2025-11-12",
       "reason": "Family function",
-      "status": "Pending",
+      "status": "pending",
       "managerId": 200
     },
     {
@@ -59,7 +59,7 @@
       "startDate": "2025-09-15",
       "endDate": "2025-09-18",
       "reason": "Medical leave",
-      "status": "Approved",
+      "status": "approved",
       "managerId": 200
     },
     {
@@ -69,7 +69,7 @@
       "startDate": "2025-09-20",
       "endDate": "2025-09-21",
       "reason": "Conference attendance",
-      "status": "Rejected",
+      "status": "rejected",
       "managerId": 200
     },
     {
@@ -79,7 +79,7 @@
       "startDate": "2025-10-25",
       "endDate": "2025-10-27",
       "reason": "Vacation trip",
-      "status": "Pending",
+      "status": "pending",
       "managerId": 200
     }
   ]

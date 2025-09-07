@@ -4,11 +4,21 @@ import { observer } from 'mobx-react';
 import { authStore } from '../stores/authStore';
 
 const EmployeeNavBar = observer(() => {
+  const onLogoutClick = () => {
+    authStore.clearStore();
+  };
   return (
     <div>
       <NavLink to='/apply-leave'>Apply Leave</NavLink>
       <NavLink to='/my-leaves'>My Leaves</NavLink>
       <div>Leave Balance: {authStore.leaveDetails.totalLeaves}</div>
+      {authStore.userInfo.id ? (
+        <button type='button' onClick={onLogoutClick}>
+          Logout
+        </button>
+      ) : (
+        ''
+      )}
     </div>
     // <AppContext.Consumer>
     //   {(context) => {

@@ -28,6 +28,28 @@ class UserLogin extends Component {
     }
   };
 
+  getManagerTeamLeaveDetails = async (managerId) => {
+    try {
+      const res = await fetch(`/leaves?managerId=${managerId}`);
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.error('Fetch leave details error:', err);
+      return [];
+    }
+  };
+
+  getUniqueEmployees = (data) => {
+    const employeeMap = new Map(
+      data.map((i) => [i.employeeId, i.employeeName])
+    );
+    const uniqueEmployees = Array.from(employeeMap, ([id, name]) => ({
+      id,
+      name
+    }));
+    return uniqueEmployees;
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,14 +63,33 @@ class UserLogin extends Component {
         data?.password === password
       ) {
         // Successful login
+        authStore.setUserInfo({
+          name: data.name,
+          id: data.id,
+          role: data.role,
+          email: data.email,
+          managerId: data.managerId
+        });
         if (data.role === 'admin') {
         }
         if (data.role === 'manager') {
+          this.getManagerTeamLeaveDetails(data.id).then((data) => {
+            console.log('*****MANAGER LEAVE DETAILS*****', data);
+            authStore.setLeaveDetails({
+              totalLeaves: data.length,
+              totalLeavesList: data
+            });
+            localStorage.setItem(
+              'employeeOptions',
+              JSON.stringify(this.getUniqueEmployees(data))
+            );
+          });
+          this.props.router.navigate(`/team-leaves/${data.id}/employeeId/all`);
         }
         if (data.role === 'employee') {
           console.log(data, '*******login data');
           this.getEmployeeLeaveDetails(data.id).then((data) => {
-            console.log('*****Leave details*****', data);
+            console.log('*****EMPLOYEE LEAVE DETAILS*****', data);
             if (data?.length > 0) {
               authStore.setLeaveDetails({
                 totalLeaves: 24 - data.length,
@@ -60,13 +101,6 @@ class UserLogin extends Component {
                 totalLeavesList: []
               });
             }
-          });
-          authStore.setUserInfo({
-            name: data.name,
-            id: data.id,
-            role: data.role,
-            email: data.email,
-            managerId: data.managerId
           });
           this.props.router.navigate('/apply-leave');
         }

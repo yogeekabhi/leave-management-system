@@ -25,6 +25,13 @@ function createAuthStore() {
         this.leaveDetails.totalLeavesList.push(appliedLeave);
       }
     },
+    updateLeaveStatusByManger(index, status) {
+      const leaveList = this.leaveDetails.totalLeavesList;
+      if (leaveList[index]) {
+        leaveList[index].status = status === 'A' ? 'Approved' : 'Rejected';
+        this.leaveDetails.totalLeavesList = [...leaveList];
+      }
+    },
     clearStore() {
       this.userInfo = {
         name: '',
