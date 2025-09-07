@@ -63,6 +63,7 @@ class UserLogin extends Component {
         data?.password === password
       ) {
         // Successful login
+        localStorage.setItem('roleType', data.role);
         authStore.setUserInfo({
           name: data.name,
           id: data.id,

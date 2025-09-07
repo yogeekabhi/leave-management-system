@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
 import { authStore } from '../stores/authStore';
