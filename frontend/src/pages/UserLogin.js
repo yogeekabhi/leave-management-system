@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from '../utils/withRouter'; // your custom wrapper for navigate
+import { authStore } from '../stores/authStore';
 
 class UserLogin extends Component {
   constructor(props) {
@@ -14,6 +15,17 @@ class UserLogin extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, error: '' });
+  };
+
+  getEmployeeLeaveDetails = async (employeeId) => {
+    try {
+      const res = await fetch(`/leaves?employeeId=${employeeId}`);
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.error('Fetch leave details error:', err);
+      return [];
+    }
   };
 
   handleSubmit = async (e) => {
@@ -34,6 +46,28 @@ class UserLogin extends Component {
         if (data.role === 'manager') {
         }
         if (data.role === 'employee') {
+          console.log(data, '*******login data');
+          this.getEmployeeLeaveDetails(data.id).then((data) => {
+            console.log('*****Leave details*****', data);
+            if (data?.length > 0) {
+              authStore.setLeaveDetails({
+                totalLeaves: 24 - data.length,
+                totalLeavesList: data
+              });
+            } else {
+              authStore.setLeaveDetails({
+                totalLeaves: 24,
+                totalLeavesList: []
+              });
+            }
+          });
+          authStore.setUserInfo({
+            name: data.name,
+            id: data.id,
+            role: data.role,
+            email: data.email,
+            managerId: data.managerId
+          });
           this.props.router.navigate('/apply-leave');
         }
       } else {

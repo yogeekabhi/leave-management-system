@@ -5,21 +5,82 @@
       "name": "Robert Downey Jr.",
       "email": "robert@company.com",
       "password": "rob123",
-      "role": "admin"
+      "role": "admin",
+      "managerId": ""
     },
     {
       "id": 200,
       "name": "Scarlett Johansson",
       "email": "scarlett@company.com",
       "password": "scar123",
-      "role": "manager"
+      "role": "manager",
+      "managerId": ""
     },
     {
       "id": 300,
       "name": "Peter Parker",
       "email": "peter@company.com",
       "password": "pet123",
-      "role": "employee"
+      "role": "employee",
+      "managerId": 200
+    },
+    {
+      "id": 301,
+      "name": "Bruce Wayne",
+      "email": "bruce@company.com",
+      "password": "bru123",
+      "role": "employee",
+      "managerId": 200
+    },
+    {
+      "id": 302,
+      "name": "Diana Prince",
+      "email": "diana@company.com",
+      "password": "dia123",
+      "role": "employee",
+      "managerId": 200
+    }
+  ],
+  "leaves": [
+    {
+      "id": 1,
+      "employeeId": 300,
+      "employeeName": "Peter Parker",
+      "startDate": "2025-09-10",
+      "endDate": "2025-09-12",
+      "reason": "Family function",
+      "status": "Pending",
+      "managerId": 200
+    },
+    {
+      "id": 2,
+      "employeeId": 301,
+      "employeeName": "Bruce Wayne",
+      "startDate": "2025-09-15",
+      "endDate": "2025-09-18",
+      "reason": "Medical leave",
+      "status": "Approved",
+      "managerId": 200
+    },
+    {
+      "id": 3,
+      "employeeId": 302,
+      "employeeName": "Diana Prince",
+      "startDate": "2025-09-20",
+      "endDate": "2025-09-21",
+      "reason": "Conference attendance",
+      "status": "Rejected",
+      "managerId": 200
+    },
+    {
+      "id": 4,
+      "employeeId": 300,
+      "employeeName": "Peter Parker",
+      "startDate": "2025-09-25",
+      "endDate": "2025-09-27",
+      "reason": "Vacation trip",
+      "status": "Pending",
+      "managerId": 200
     }
   ]
 }

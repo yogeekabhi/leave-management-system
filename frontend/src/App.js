@@ -3,6 +3,7 @@ import './App.css';
 import RoleSelection from './components/RoleSelection';
 import AppContext from './context/AppContext';
 import RouteHolder from './routes/RouteHolder';
+// import { authStore } from './stores/authStore';
 
 class App extends React.Component {
   constructor(props) {
