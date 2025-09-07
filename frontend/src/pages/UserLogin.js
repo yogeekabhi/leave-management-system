@@ -120,20 +120,43 @@ class UserLogin extends Component {
 
     return (
       <div
-        style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
+          background: '#f5f6fa',
+          padding: '16px',
+          boxSizing: 'border-box',
+          width: '100%',
+          maxWidth: '100vw',
+          overflowX: 'hidden'
+        }}
       >
         <form
           onSubmit={this.handleSubmit}
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
-            width: '300px'
+            gap: '16px',
+            width: '100%',
+            maxWidth: '360px',
+            background: '#fff',
+            padding: '24px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
           }}
         >
-          <h2>Login</h2>
-          <div>
-            <label htmlFor='emp_id'>Employee ID</label>
+          <h2
+            style={{ textAlign: 'center', marginBottom: '8px', color: '#333' }}
+          >
+            Login
+          </h2>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label htmlFor='emp_id' style={{ fontSize: '14px', color: '#555' }}>
+              Employee ID
+            </label>
             <input
               id='emp_id'
               type='number'
@@ -142,10 +165,22 @@ class UserLogin extends Component {
               onChange={this.handleChange}
               placeholder='Enter your Employee ID'
               required
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px'
+              }}
             />
           </div>
-          <div>
-            <label htmlFor='user_name'> Email</label>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label
+              htmlFor='user_name'
+              style={{ fontSize: '14px', color: '#555' }}
+            >
+              Email
+            </label>
             <input
               id='user_name'
               type='email'
@@ -154,10 +189,22 @@ class UserLogin extends Component {
               onChange={this.handleChange}
               placeholder='Enter your Email'
               required
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px'
+              }}
             />
           </div>
-          <div>
-            <label htmlFor='password'>Password</label>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label
+              htmlFor='password'
+              style={{ fontSize: '14px', color: '#555' }}
+            >
+              Password
+            </label>
             <input
               id='password'
               type='password'
@@ -166,10 +213,41 @@ class UserLogin extends Component {
               placeholder='Enter your Password'
               onChange={this.handleChange}
               required
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px'
+              }}
             />
           </div>
-          {error && <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p>}
-          <button type='submit'>Submit</button>
+
+          {error && (
+            <p
+              style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}
+            >
+              {error}
+            </p>
+          )}
+
+          <button
+            type='submit'
+            style={{
+              padding: '12px',
+              background: '#4e73df',
+              color: '#fff',
+              fontWeight: 'bold',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '15px',
+              transition: 'background 0.3s ease'
+            }}
+            onMouseOver={(e) => (e.target.style.background = '#3b5cb8')}
+            onMouseOut={(e) => (e.target.style.background = '#4e73df')}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );

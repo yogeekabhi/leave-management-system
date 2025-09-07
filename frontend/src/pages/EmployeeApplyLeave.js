@@ -1,6 +1,7 @@
 import React from 'react';
 import EmployeeNavBar from '../components/EmployeeNavBar';
 import { authStore } from '../stores/authStore';
+import { observer } from 'mobx-react';
 
 class EmployeeApplyLeave extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class EmployeeApplyLeave extends React.Component {
         startDate: this.state.startDate,
         endDate: this.state.endDate,
         reason: this.state.reason,
-        status: 'Pending',
+        status: 'pending',
         managerId: authStore?.userInfo?.managerId
       });
       this.setState({
@@ -102,24 +103,63 @@ class EmployeeApplyLeave extends React.Component {
       yearEndDate
     } = this.state;
     return (
-      <div>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '100vw',
+          boxSizing: 'border-box',
+          overflowX: 'hidden',
+          background: '#f5f6fa',
+          minHeight: '100vh',
+          padding: '16px'
+        }}
+      >
         <EmployeeNavBar />
-        <form onSubmit={this.handleSubmit}>
-          <h2>Apply Leave</h2>
-          <label htmlFor='name'>
-            Name :
+        <form
+          onSubmit={this.handleSubmit}
+          style={{
+            background: '#fff',
+            padding: '24px',
+            marginTop: '20px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+            maxWidth: '480px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px'
+          }}
+        >
+          <h2 style={{ textAlign: 'center', margin: 0 }}>Apply Leave</h2>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label htmlFor='name' style={{ fontSize: '14px', color: '#333' }}>
+              Name
+            </label>
             <input
               id='name'
               type='text'
               name='user-name'
               value={authStore?.userInfo?.name}
               readOnly
+              style={{
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '6px',
+                fontSize: '14px',
+                background: '#f9f9f9'
+              }}
             />
-          </label>
-          <br />
+          </div>
 
-          <label htmlFor='start-date'>
-            Start Date:
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label
+              htmlFor='start-date'
+              style={{ fontSize: '14px', color: '#333' }}
+            >
+              Start Date
+            </label>
             <input
               id='start-date'
               type='date'
@@ -130,12 +170,22 @@ class EmployeeApplyLeave extends React.Component {
               onChange={this.handleInputChange}
               onKeyDown={this.onKeyDownAction}
               required
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px'
+              }}
             />
-          </label>
-          <br />
+          </div>
 
-          <label htmlFor='end-date'>
-            End Date:
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label
+              htmlFor='end-date'
+              style={{ fontSize: '14px', color: '#333' }}
+            >
+              End Date
+            </label>
             <input
               id='end-date'
               type='date'
@@ -146,28 +196,73 @@ class EmployeeApplyLeave extends React.Component {
               onChange={this.handleInputChange}
               onKeyDown={this.onKeyDownAction}
               required
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px'
+              }}
             />
-          </label>
-          <br />
+          </div>
 
-          <label htmlFor='reason'>
-            Reason:
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label htmlFor='reason' style={{ fontSize: '14px', color: '#333' }}>
+              Reason
+            </label>
             <textarea
               required
               id='reason'
               name='reason'
               value={reason}
               onChange={this.handleInputChange}
+              style={{
+                padding: '10px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                fontSize: '14px',
+                resize: 'vertical',
+                minHeight: '80px'
+              }}
             />
-          </label>
-          <br />
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          {success && <p style={{ color: 'green' }}>{success}</p>}
-          <button type='submit'>Submit</button>
+          </div>
+
+          {error && (
+            <p style={{ color: 'red', fontSize: '14px', textAlign: 'center' }}>
+              {error}
+            </p>
+          )}
+          {success && (
+            <p
+              style={{ color: 'green', fontSize: '14px', textAlign: 'center' }}
+            >
+              {success}
+            </p>
+          )}
+
+          <button
+            type='submit'
+            disabled={!authStore.leaveDetails.totalLeaves}
+            style={{
+              padding: '12px',
+              background: '#4e73df',
+              color: '#fff',
+              fontWeight: 'bold',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '15px',
+              cursor: !authStore.leaveDetails.totalLeaves
+                ? 'not-allowed'
+                : 'pointer',
+              opacity: !authStore.leaveDetails.totalLeaves ? 0.6 : 1
+            }}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default EmployeeApplyLeave;
+export default observer(EmployeeApplyLeave);
