@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import AppContext from '../context/AppContext';
 import { authStore } from '../stores/authStore';
+import { withRouter } from '../utils/withRouter';
 
 class RoleSelection extends Component {
   static contextType = AppContext;
@@ -10,8 +11,15 @@ class RoleSelection extends Component {
     this.state = {};
   }
 
+  handleRoleChange = (e) => {
+    this.context.setRole(e.target.value);
+    authStore.clearStore();
+    localStorage.clear();
+    this.props.router.navigate('/');
+  };
+
   render() {
-    const { role, setRole } = this.context;
+    const { role } = this.context;
     return (
       <div
         style={{
@@ -41,7 +49,7 @@ class RoleSelection extends Component {
             id='role-select'
             name='roles'
             value={role}
-            onChange={(e) => setRole(e.target.value)}
+            onChange={this.handleRoleChange}
             style={{
               padding: '8px 10px',
               borderRadius: '6px',
@@ -62,4 +70,4 @@ class RoleSelection extends Component {
   }
 }
 
-export default observer(RoleSelection);
+export default withRouter(RoleSelection);

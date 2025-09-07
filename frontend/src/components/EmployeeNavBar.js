@@ -4,9 +4,6 @@ import { observer } from 'mobx-react';
 import { authStore } from '../stores/authStore';
 
 const EmployeeNavBar = observer(() => {
-  const onLogoutClick = () => {
-    authStore.clearStore();
-  };
   return (
     <nav
       style={{
@@ -51,24 +48,6 @@ const EmployeeNavBar = observer(() => {
       <div style={{ fontSize: '14px', fontWeight: '500' }}>
         Leave Balance: {authStore.leaveDetails.totalLeaves}
       </div>
-
-      {authStore.userInfo.id && (
-        <button
-          type='button'
-          onClick={onLogoutClick}
-          style={{
-            padding: '8px 12px',
-            background: '#e74a3b',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '14px'
-          }}
-        >
-          Logout
-        </button>
-      )}
     </nav>
   );
 });

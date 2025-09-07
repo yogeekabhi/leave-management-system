@@ -1,15 +1,7 @@
-import React, { use } from 'react';
-import { observer } from 'mobx-react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { authStore } from '../stores/authStore';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const AdminNavBar = observer(() => {
-  const navigate = useNavigate();
-  const onLogoutClick = () => {
-    authStore.clearStore();
-    navigate('/');
-  };
-
+const AdminNavBar = () => {
   return (
     <nav
       style={{
@@ -37,23 +29,8 @@ const AdminNavBar = observer(() => {
       >
         Dashboard
       </NavLink>
-      <button
-        type='button'
-        onClick={onLogoutClick}
-        style={{
-          padding: '8px 12px',
-          background: '#e74a3b',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '14px'
-        }}
-      >
-        Logout
-      </button>
     </nav>
   );
-});
+};
 
 export default AdminNavBar;

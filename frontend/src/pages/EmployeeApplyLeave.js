@@ -2,8 +2,10 @@ import React from 'react';
 import EmployeeNavBar from '../components/EmployeeNavBar';
 import { authStore } from '../stores/authStore';
 import { observer } from 'mobx-react';
+import AppContext from '../context/AppContext';
 
 class EmployeeApplyLeave extends React.Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +20,7 @@ class EmployeeApplyLeave extends React.Component {
   }
 
   componentDidMount() {
+    this.context.setRole('employee');
     console.log(authStore.userInfo.id, '**********authStore');
     this.getServerTime().then((serverTime) => {
       console.log('*****Server time*****', serverTime);

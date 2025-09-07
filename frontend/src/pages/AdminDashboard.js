@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import AdminDashboardChart from '../components/AdminDashboardChart';
 import AdminNavBar from '../components/AdminNavBar';
+import AppContext from '../context/AppContext';
 
 class AdminDashboard extends Component {
-  state = {
-    summary: { total: 0, approved: 0, pending: 0, rejected: 0 },
-    leavesByEmployee: {}
-  };
+  static contextType = AppContext;
+  constructor(props) {
+    super(props);
+    this.state = {
+      summary: { total: 0, approved: 0, pending: 0, rejected: 0 },
+      leavesByEmployee: {}
+    };
+  }
 
   componentDidMount() {
+    this.context.setRole('admin');
     this.fetchLeaves();
   }
 

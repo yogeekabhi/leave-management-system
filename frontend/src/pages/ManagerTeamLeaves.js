@@ -5,8 +5,10 @@ import ManagerNavBar from '../components/ManagerNavBar';
 import ManagerLeavesTable from '../components/ManagerLeavesTable';
 import ManagerFilterSection from '../components/ManagerFilterSection';
 import { withRouter } from '../utils/withRouter';
+import AppContext from '../context/AppContext';
 
 class ManagerTeamLeaves extends React.Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +16,7 @@ class ManagerTeamLeaves extends React.Component {
     };
   }
   componentDidMount() {
+    this.context.setRole('manager');
     this.getFilteredResults(this.props.router.params);
     // this.getFilteredResults(this.).then((data) => {
     //   console.log('*****MANAGER LEAVE DETAILS*****', data);

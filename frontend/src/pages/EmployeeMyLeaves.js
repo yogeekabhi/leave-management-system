@@ -90,9 +90,9 @@ class EmployeeMyLeaves extends React.Component {
             </thead>
             <tbody>
               {authStore.leaveDetails.totalLeavesList.length > 0 ? (
-                authStore.leaveDetails.totalLeavesList.map((leave) => (
+                authStore.leaveDetails.totalLeavesList.map((leave, uid) => (
                   <tr
-                    key={leave.id}
+                    key={uid}
                     style={{
                       borderBottom: '1px solid #eee',
                       background: '#fff'
