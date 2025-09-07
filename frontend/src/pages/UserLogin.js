@@ -134,7 +134,7 @@ class UserLogin extends Component {
             />
           </div>
           {error && <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p>}
-          <button type='submit'>Login</button>
+          <button type='submit'>Submit</button>
         </form>
       </div>
     );

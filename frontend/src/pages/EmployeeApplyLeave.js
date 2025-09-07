@@ -11,18 +11,19 @@ class EmployeeApplyLeave extends React.Component {
       reason: '',
       error: '',
       success: '',
-      todayDate: ''
+      todayDate: '',
+      yearEndDate: ''
     };
   }
 
   componentDidMount() {
     console.log(authStore.userInfo.id, '**********authStore');
     this.getServerTime().then((serverTime) => {
-      console.log(
-        '*****Server time*****',
-        serverTime.toISOString().split('T')[0]
-      );
-      this.setState({ todayDate: serverTime.toISOString().split('T')[0] });
+      console.log('*****Server time*****', serverTime);
+      this.setState({
+        todayDate: serverTime.currentDate.toISOString().split('T')[0],
+        yearEndDate: `${serverTime.currentYear}-12-31`
+      });
     });
   }
 
@@ -31,10 +32,17 @@ class EmployeeApplyLeave extends React.Component {
       const res = await fetch(`/server-time`);
       if (!res.ok) throw new Error('Failed to fetch server time');
       const data = await res.json();
-      return new Date(data.now);
+      return {
+        currentDate: new Date(data.now),
+        currentYear: new Date(data.now).getFullYear()
+      };
     } catch (err) {
       console.error('Server time error:', err);
-      return new Date(); // fallback to client time
+      // fallback to client time
+      return {
+        currentDate: new Date(),
+        currentYear: new Date().getFullYear()
+      };
     }
   };
 
@@ -84,13 +92,31 @@ class EmployeeApplyLeave extends React.Component {
   };
 
   render() {
-    const { startDate, endDate, reason, error, todayDate, success } =
-      this.state;
+    const {
+      startDate,
+      endDate,
+      reason,
+      error,
+      todayDate,
+      success,
+      yearEndDate
+    } = this.state;
     return (
       <div>
         <EmployeeNavBar />
         <form onSubmit={this.handleSubmit}>
           <h2>Apply Leave</h2>
+          <label htmlFor='name'>
+            Name :
+            <input
+              id='name'
+              type='text'
+              name='user-name'
+              value={authStore?.userInfo?.name}
+              readOnly
+            />
+          </label>
+          <br />
 
           <label htmlFor='start-date'>
             Start Date:
@@ -100,6 +126,7 @@ class EmployeeApplyLeave extends React.Component {
               name='startDate'
               value={startDate}
               min={todayDate}
+              max={yearEndDate}
               onChange={this.handleInputChange}
               onKeyDown={this.onKeyDownAction}
               required
@@ -115,6 +142,7 @@ class EmployeeApplyLeave extends React.Component {
               name='endDate'
               value={endDate}
               min={startDate || todayDate}
+              max={yearEndDate}
               onChange={this.handleInputChange}
               onKeyDown={this.onKeyDownAction}
               required
