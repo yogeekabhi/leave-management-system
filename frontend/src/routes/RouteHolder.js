@@ -5,6 +5,7 @@ import EmployeeApplyLeave from '../pages/EmployeeApplyLeave';
 import EmployeeMyLeaves from '../pages/EmployeeMyLeaves';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import ManagerTeamLeaves from '../pages/ManagerTeamLeaves';
+import AdminDashboard from '../pages/AdminDashboard';
 
 const RouteHolder = () => {
   return (
@@ -30,6 +31,7 @@ const RouteHolder = () => {
         path='/team-leaves/:managerId/:employeeId/:status'
         element={<ManagerTeamLeaves />}
       />
+      <Route path='/admin-dashboard' element={<AdminDashboard />} />
     </Routes>
   );
 };

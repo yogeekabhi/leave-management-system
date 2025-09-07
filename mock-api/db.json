@@ -9,10 +9,42 @@
       "managerId": ""
     },
     {
+      "id": 101,
+      "name": "Walter White",
+      "email": "walter@company.com",
+      "password": "walter123",
+      "role": "admin",
+      "managerId": ""
+    },
+    {
+      "id": 102,
+      "name": "Tony Stark",
+      "email": "tony@company.com",
+      "password": "tony123",
+      "role": "admin",
+      "managerId": ""
+    },
+    {
       "id": 200,
       "name": "Scarlett Johansson",
       "email": "scarlett@company.com",
       "password": "scar123",
+      "role": "manager",
+      "managerId": ""
+    },
+    {
+      "id": 201,
+      "name": "Chris Evans",
+      "email": "chris@company.com",
+      "password": "chris123",
+      "role": "manager",
+      "managerId": ""
+    },
+    {
+      "id": 202,
+      "name": "Natasha Romanoff",
+      "email": "natasha@company.com",
+      "password": "nat123",
       "role": "manager",
       "managerId": ""
     },
@@ -26,19 +58,67 @@
     },
     {
       "id": 301,
-      "name": "Bruce Wayne",
-      "email": "bruce@company.com",
-      "password": "bru123",
+      "name": "Mary Jane",
+      "email": "mary@company.com",
+      "password": "mary123",
       "role": "employee",
       "managerId": 200
     },
     {
       "id": 302,
-      "name": "Diana Prince",
-      "email": "diana@company.com",
-      "password": "dia123",
+      "name": "Eddy Brock",
+      "email": "eddy@company.com",
+      "password": "eddy123",
       "role": "employee",
       "managerId": 200
+    },
+    {
+      "id": 303,
+      "name": "Bruce Banner",
+      "email": "bruce@company.com",
+      "password": "bruce123",
+      "role": "employee",
+      "managerId": 201
+    },
+    {
+      "id": 304,
+      "name": "Bucky Barnes",
+      "email": "bucky@company.com",
+      "password": "bucky123",
+      "role": "employee",
+      "managerId": 201
+    },
+    {
+      "id": 305,
+      "name": "Red Skull",
+      "email": "red@company.com",
+      "password": "red123",
+      "role": "employee",
+      "managerId": 201
+    },
+    {
+      "id": 306,
+      "name": "Clark Kent",
+      "email": "clark@company.com",
+      "password": "clark123",
+      "role": "employee",
+      "managerId": 202
+    },
+    {
+      "id": 307,
+      "name": "Lois Lane",
+      "email": "lois@company.com",
+      "password": "lois123",
+      "role": "employee",
+      "managerId": 202
+    },
+    {
+      "id": 308,
+      "name": "Barry Allen",
+      "email": "barry@company.com",
+      "password": "barry123",
+      "role": "employee",
+      "managerId": 202
     }
   ],
   "leaves": [
@@ -54,8 +134,38 @@
     },
     {
       "id": 2,
+      "employeeId": 300,
+      "employeeName": "Peter Parker",
+      "startDate": "2025-12-20",
+      "endDate": "2025-12-22",
+      "reason": "Conference trip",
+      "status": "approved",
+      "managerId": 200
+    },
+    {
+      "id": 2,
+      "employeeId": 300,
+      "employeeName": "Peter Parker",
+      "startDate": "2025-10-01",
+      "endDate": "2025-10-05",
+      "reason": "Training",
+      "status": "approved",
+      "managerId": 200
+    },
+    {
+      "id": 3,
+      "employeeId": 300,
+      "employeeName": "Peter Parker",
+      "startDate": "2025-09-05",
+      "endDate": "2025-09-06",
+      "reason": "Urgent work",
+      "status": "rejected",
+      "managerId": 200
+    },
+    {
+      "id": 4,
       "employeeId": 301,
-      "employeeName": "Bruce Wayne",
+      "employeeName": "Mary Jane",
       "startDate": "2025-09-15",
       "endDate": "2025-09-18",
       "reason": "Medical leave",
@@ -63,9 +173,29 @@
       "managerId": 200
     },
     {
-      "id": 3,
+      "id": 5,
+      "employeeId": 301,
+      "employeeName": "Mary Jane",
+      "startDate": "2025-11-25",
+      "endDate": "2025-11-26",
+      "reason": "Personal commitment",
+      "status": "rejected",
+      "managerId": 200
+    },
+    {
+      "id": 6,
+      "employeeId": 301,
+      "employeeName": "Mary Jane",
+      "startDate": "2025-12-05",
+      "endDate": "2025-12-06",
+      "reason": "Conference event",
+      "status": "pending",
+      "managerId": 200
+    },
+    {
+      "id": 7,
       "employeeId": 302,
-      "employeeName": "Diana Prince",
+      "employeeName": "Eddy Brock",
       "startDate": "2025-09-20",
       "endDate": "2025-09-21",
       "reason": "Conference attendance",
@@ -73,14 +203,204 @@
       "managerId": 200
     },
     {
-      "id": 4,
-      "employeeId": 300,
-      "employeeName": "Peter Parker",
-      "startDate": "2025-10-25",
-      "endDate": "2025-10-27",
-      "reason": "Vacation trip",
+      "id": 8,
+      "employeeId": 302,
+      "employeeName": "Eddy Brock",
+      "startDate": "2025-10-12",
+      "endDate": "2025-10-14",
+      "reason": "Medical leave",
+      "status": "approved",
+      "managerId": 200
+    },
+    {
+      "id": 9,
+      "employeeId": 302,
+      "employeeName": "Eddy Brock",
+      "startDate": "2025-12-15",
+      "endDate": "2025-12-17",
+      "reason": "Out of station",
       "status": "pending",
       "managerId": 200
+    },
+    {
+      "id": 10,
+      "employeeId": 303,
+      "employeeName": "Bruce Banner",
+      "startDate": "2025-10-05",
+      "endDate": "2025-10-07",
+      "reason": "Personal work",
+      "status": "pending",
+      "managerId": 201
+    },
+    {
+      "id": 11,
+      "employeeId": 303,
+      "employeeName": "Bruce Banner",
+      "startDate": "2025-11-15",
+      "endDate": "2025-11-18",
+      "reason": "Medical leave",
+      "status": "approved",
+      "managerId": 201
+    },
+    {
+      "id": 12,
+      "employeeId": 303,
+      "employeeName": "Bruce Banner",
+      "startDate": "2025-09-20",
+      "endDate": "2025-09-21",
+      "reason": "Family event",
+      "status": "rejected",
+      "managerId": 201
+    },
+    {
+      "id": 13,
+      "employeeId": 304,
+      "employeeName": "Bucky Barnes",
+      "startDate": "2025-11-01",
+      "endDate": "2025-11-03",
+      "reason": "Medical checkup",
+      "status": "approved",
+      "managerId": 201
+    },
+    {
+      "id": 14,
+      "employeeId": 304,
+      "employeeName": "Bucky Barnes",
+      "startDate": "2025-09-10",
+      "endDate": "2025-09-12",
+      "reason": "Conference",
+      "status": "rejected",
+      "managerId": 201
+    },
+    {
+      "id": 15,
+      "employeeId": 304,
+      "employeeName": "Bucky Barnes",
+      "startDate": "2025-12-10",
+      "endDate": "2025-12-11",
+      "reason": "Training",
+      "status": "pending",
+      "managerId": 201
+    },
+    {
+      "id": 16,
+      "employeeId": 305,
+      "employeeName": "Red Skull",
+      "startDate": "2025-09-25",
+      "endDate": "2025-09-27",
+      "reason": "Vacation",
+      "status": "rejected",
+      "managerId": 201
+    },
+    {
+      "id": 17,
+      "employeeId": 305,
+      "employeeName": "Red Skull",
+      "startDate": "2025-11-28",
+      "endDate": "2025-11-30",
+      "reason": "Travel",
+      "status": "pending",
+      "managerId": 201
+    },
+    {
+      "id": 18,
+      "employeeId": 305,
+      "employeeName": "Red Skull",
+      "startDate": "2025-12-15",
+      "endDate": "2025-12-17",
+      "reason": "Medical leave",
+      "status": "approved",
+      "managerId": 201
+    },
+    {
+      "id": 19,
+      "employeeId": 306,
+      "employeeName": "Clark Kent",
+      "startDate": "2025-12-01",
+      "endDate": "2025-12-05",
+      "reason": "Training",
+      "status": "pending",
+      "managerId": 202
+    },
+    {
+      "id": 20,
+      "employeeId": 306,
+      "employeeName": "Clark Kent",
+      "startDate": "2025-09-05",
+      "endDate": "2025-09-06",
+      "reason": "Urgent matter",
+      "status": "approved",
+      "managerId": 202
+    },
+    {
+      "id": 21,
+      "employeeId": 306,
+      "employeeName": "Clark Kent",
+      "startDate": "2025-11-10",
+      "endDate": "2025-11-11",
+      "reason": "Conference",
+      "status": "rejected",
+      "managerId": 202
+    },
+    {
+      "id": 22,
+      "employeeId": 307,
+      "employeeName": "Lois Lane",
+      "startDate": "2025-12-10",
+      "endDate": "2025-12-12",
+      "reason": "Family event",
+      "status": "approved",
+      "managerId": 202
+    },
+    {
+      "id": 23,
+      "employeeId": 307,
+      "employeeName": "Lois Lane",
+      "startDate": "2025-11-08",
+      "endDate": "2025-11-09",
+      "reason": "Conference work",
+      "status": "rejected",
+      "managerId": 202
+    },
+    {
+      "id": 24,
+      "employeeId": 307,
+      "employeeName": "Lois Lane",
+      "startDate": "2025-10-02",
+      "endDate": "2025-10-03",
+      "reason": "Medical checkup",
+      "status": "pending",
+      "managerId": 202
+    },
+    {
+      "id": 25,
+      "employeeId": 308,
+      "employeeName": "Barry Allen",
+      "startDate": "2025-10-15",
+      "endDate": "2025-10-16",
+      "reason": "Urgent work",
+      "status": "pending",
+      "managerId": 202
+    },
+    {
+      "id": 26,
+      "employeeId": 308,
+      "employeeName": "Barry Allen",
+      "startDate": "2025-12-18",
+      "endDate": "2025-12-20",
+      "reason": "Personal time",
+      "status": "approved",
+      "managerId": 202
+    },
+    {
+      "id": 27,
+      "employeeId": 308,
+      "employeeName": "Barry Allen",
+      "startDate": "2025-11-20",
+      "endDate": "2025-11-21",
+      "reason": "Travel",
+      "status": "rejected",
+      "managerId": 202
     }
   ]
 }

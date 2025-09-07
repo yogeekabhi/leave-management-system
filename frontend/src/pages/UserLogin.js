@@ -71,6 +71,7 @@ class UserLogin extends Component {
           managerId: data.managerId
         });
         if (data.role === 'admin') {
+          this.props.router.navigate('/admin-dashboard');
         }
         if (data.role === 'manager') {
           this.getManagerTeamLeaveDetails(data.id).then((data) => {
