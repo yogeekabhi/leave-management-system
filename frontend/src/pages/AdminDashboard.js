@@ -1,4 +1,3 @@
-// AdminDashboard.jsx (class component, responsive cards + simple bar chart)
 import React, { Component } from 'react';
 import AdminDashboardChart from '../components/AdminDashboardChart';
 import AdminNavBar from '../components/AdminNavBar';
@@ -58,10 +57,29 @@ class AdminDashboard extends Component {
     const { summary, leavesByEmployee } = this.state;
 
     return (
-      <div style={styles.container}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '100vw',
+          boxSizing: 'border-box',
+          overflowX: 'hidden',
+          background: '#f5f6fa',
+          minHeight: '100vh',
+          padding: '16px'
+        }}
+      >
         <AdminNavBar />
-        <h2 style={styles.header}>Admin Dashboard</h2>
-        <div style={styles.cards}>
+        <h2 style={{ margin: '20px 0', fontSize: '22px', textAlign: 'center' }}>
+          Admin Dashboard
+        </h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: '16px',
+            marginBottom: '30px'
+          }}
+        >
           <Card title='Total' value={summary.total} border='#4e73df' />
           <Card title='Approved' value={summary.approved} border='green' />
           <Card title='Pending' value={summary.pending} border='orange' />
@@ -75,59 +93,21 @@ class AdminDashboard extends Component {
 }
 
 const Card = ({ title, value, border }) => (
-  <div style={{ ...styles.card, borderTop: `4px solid ${border}` }}>
-    <h3 style={styles.cardTitle}>{title}</h3>
-    <p style={styles.cardNumber}>{value}</p>
+  <div
+    style={{
+      background: '#fff',
+      padding: '16px',
+      borderRadius: '8px',
+      boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+      textAlign: 'center',
+      borderTop: `4px solid ${border}`
+    }}
+  >
+    <h3 style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}>
+      {title}
+    </h3>
+    <p style={{ fontSize: '22px', fontWeight: 'bold', margin: 0 }}>{value}</p>
   </div>
 );
-
-const styles = {
-  container: {
-    padding: 16,
-    fontFamily: 'Arial, sans-serif',
-    color: '#333',
-    maxWidth: 900,
-    margin: '0 auto'
-  },
-  header: { marginBottom: 20, fontSize: 22 },
-  cards: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-    gap: 16,
-    marginBottom: 30
-  },
-  card: {
-    background: '#fff',
-    padding: 16,
-    borderRadius: 8,
-    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-    textAlign: 'center'
-  },
-  cardTitle: { fontSize: 14, color: '#555', marginBottom: 8 },
-  cardNumber: { fontSize: 22, fontWeight: 'bold', margin: 0 },
-  sectionTitle: { marginBottom: 12, fontSize: 18 },
-  chart: { background: '#f9f9f9', padding: 12, borderRadius: 8 },
-  barRow: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 10,
-    flexWrap: 'wrap'
-  },
-  barLabel: { minWidth: 120, fontSize: 14, marginBottom: 4 },
-  bar: {
-    background: '#4e73df',
-    height: 20,
-    borderRadius: 4,
-    position: 'relative',
-    flexGrow: 1,
-    minWidth: 100,
-    display: 'flex',
-    alignItems: 'center',
-    color: '#fff',
-    fontSize: 12,
-    paddingLeft: 6
-  },
-  barValue: { position: 'absolute', right: 6, fontSize: 12 }
-};
 
 export default AdminDashboard;
