@@ -150,17 +150,17 @@ Frontend runs on `http://localhost:3000` (or another available port).
 Use these credentials from `db.json`:
 
 **Admin**
-
+- Employee ID: `100`
 - Email: `robert@company.com`
 - Password: `rob123`
 
 **Manager**
-
+- Employee ID: `200`
 - Email: `scarlett@company.com`
 - Password: `scar123`
 
 **Employee**
-
+- Employee ID: `300`
 - Email: `peter@company.com`
 - Password: `pet123`
 
