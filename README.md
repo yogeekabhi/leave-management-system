@@ -81,7 +81,8 @@ You can run directly:
 npx json-server --watch db.json --port 5000
 ```
 
-Mock API runs on `http://localhost:3000` with endpoints:
+Mock API runs on `http://localhost:3000` as `"proxy": "http://localhost:5000"` in package.json in frontend 
+with endpoints:
 
 - `/users`
 - `/leaves`
