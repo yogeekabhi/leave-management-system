@@ -78,10 +78,10 @@ npm install
 You can run directly:
 
 ```bash
-npx json-server --watch db.json --port <port_number>
+npx json-server --watch db.json --port 5000
 ```
 
-Mock API runs on `http://localhost:<port_number>` with endpoints:
+Mock API runs on `http://localhost:3000` with endpoints:
 
 - `/users`
 - `/leaves`
